@@ -11,9 +11,6 @@ type ResultsStateType = {
   temperature: number;
   feelsLike: number;
   country: string;
-  sunrise: number;
-  sunset: number;
-  population: number;
   description: string;
   iconweather: string;
 };
@@ -25,9 +22,6 @@ export default function App() {
     temperature: 0,
     feelsLike: 0,
     country: "",
-    sunrise: 0,
-    sunset: 0,
-    population: 0,
     description: "",
     iconweather: "",
   });
@@ -45,19 +39,18 @@ export default function App() {
           temperature: Math.round(data.list[0].main.temp),
           feelsLike: Math.round(data.list[0].main.feels_like),
           country: data.city.country,
-          sunrise: data.city.sunrise,
-          sunset: data.city.sunset,
-          population: data.city.population,
           description: data.list[0].weather[0].description,
           iconweather: data.list[0].weather[0].icon,
         });
       });
   };
+
+  // if the button is clicked, the results will be displayed otherwise only the form will be displayed
   return (
-    <div className="app">
+    <div className="App">
       <Title />
       <Form setCity={setCity} getWeather={getWeather} />
-      <Results results={results} />
+      {results.cityName && <Results results={results} />}
     </div>
   );
 }

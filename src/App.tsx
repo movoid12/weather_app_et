@@ -15,6 +15,7 @@ type ResultsStateType = {
   sunset: number;
   population: number;
   description: string;
+  iconweather: string;
 };
 
 export default function App() {
@@ -28,6 +29,7 @@ export default function App() {
     sunset: 0,
     population: 0,
     description: "",
+    iconweather: "",
   });
 
   // https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${proccess.env.API_KEY}&units=metric
@@ -47,6 +49,7 @@ export default function App() {
           sunset: data.city.sunset,
           population: data.city.population,
           description: data.list[0].weather[0].description,
+          iconweather: data.list[0].weather[0].icon,
         });
       });
   };

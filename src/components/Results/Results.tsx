@@ -8,6 +8,7 @@ type ResultsProps = {
     sunset: number;
     population: number;
     description: string;
+    iconweather: string;
   };
 };
 
@@ -22,6 +23,7 @@ export default function Results({ results }: ResultsProps) {
       <h2>Sonneenuntergagn: {results.sunset}</h2>
       <h2>Einwohner: {results.population}</h2>
       <h2>Wetter: {results.description}</h2>
+      <img src={`http://openweathermap.org/img/w/${results.iconweather}.png`} alt="weather" />
     </div>
   );
 }

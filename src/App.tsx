@@ -14,15 +14,11 @@ type ResultsStateType = {
   sunrise: number;
   sunset: number;
   population: number;
-
+  description: string;
 };
 
 export default function App() {
- 
- 
   const [city, setCity] = useState<string>("");
- 
- 
   const [results, setResults] = useState<ResultsStateType>({
     cityName: "",
     temperature: 0,
@@ -31,6 +27,7 @@ export default function App() {
     sunrise: 0,
     sunset: 0,
     population: 0,
+    description: "",
   });
 
   // https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${proccess.env.API_KEY}&units=metric
@@ -49,12 +46,11 @@ export default function App() {
           sunrise: data.city.sunrise,
           sunset: data.city.sunset,
           population: data.city.population,
+          description: data.list[0].weather[0].description,
         });
       });
   };
   return (
-
-
     <div className="app">
       <Title />
       <Form setCity={setCity} getWeather={getWeather} />

@@ -2,6 +2,7 @@ import { CardMedia } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import styles from './result.module.css';
 
 type ResultsProps = {
   results: {
@@ -20,29 +21,32 @@ type ResultsProps = {
 
 export default function Results({ results }: ResultsProps) {
   return (
-    <div>
+    <div className='styles.resultcard'>
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
-        height="70"
-        image={`http://openweathermap.org/img/w/${results.iconweather}.png`}
+        height="300"
+        image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIAW1nUtyRnsIRoo4ZwuW64Xb0RRsksSwVxsTstuBCegURqVw1WEDGl0sf2VpFgpmY298&usqp=CAUhttps://weatherextension.com/img/Weather%20Extension%20Logo.png"
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {results.cityName} °C
+        <Typography gutterBottom variant="h4" component="div">
+          {results.cityName}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {results.temperature} °C
+        <Typography variant="h6" color="text.primary">
+        Tem­pe­ra­tur: {results.temperature} °C
         </Typography>
+        <Typography variant="h6" color="text.primary">
+        Gefühlt: {results.feelsLike} °C
+        </Typography>
+        <Typography variant="h6" color="text.primary">
+        Land: {results.country}
+        </Typography>
+        <Typography variant="h5" color="text.succes">
+         {results.description}
+        </Typography>
+      <img src={`http://openweathermap.org/img/w/${results.iconweather}.png`} alt="weather" />
       </CardContent>
     </Card>
-
-      <h2>Stadt: {results.cityName}</h2>
-      <h2>Tempurature: {results.temperature} °C</h2>
-      <h2>Gefühlt: {results.feelsLike} °C</h2>
-      <h2>Land: {results.country}</h2>
-      <h2>Wetter: {results.description}</h2>
-      <img src={`http://openweathermap.org/img/w/${results.iconweather}.png`} alt="weather" />
     </div>
   );
 }

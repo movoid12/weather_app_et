@@ -30,7 +30,7 @@ export default function App() {
   const getWeather = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric&lang=de`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -47,7 +47,7 @@ export default function App() {
 
   // if the button is clicked, the results will be displayed otherwise only the form will be displayed
   return (
-    <div className="App">
+    <div className="app">
       <Title />
       <Form setCity={setCity} getWeather={getWeather} />
       {results.cityName && <Results results={results} />}

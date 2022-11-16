@@ -1,3 +1,4 @@
+import { TextField } from '@mui/material';
 import React from 'react';
 
 type FormProps = {
@@ -8,12 +9,16 @@ type FormProps = {
 export default function Form({ setCity, getWeather }: FormProps) {
   return (
     <form onSubmit={getWeather}>
-      <input
-        type="text"
-        placeholder="Enter city name"
-        onChange={(e) => setCity(e.target.value)}
-      />
-      <button type="submit">Get Weather</button>
+        <TextField
+          id="filled-search"
+          label="Search field"
+          placeholder="Enter city name"
+          type="search"
+          variant="filled"
+          color='primary'
+          onChange={(e) => setCity(e.target.value)}
+        />      
+      <button type="submit">Suchen</button>
     </form>
   );
 }
